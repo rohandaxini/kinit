@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["rohan_daxini@yahoo.com"]
   spec.description   = %q{The Kinit gem is developed by Rohan Daxini at Kiprosh.com }
   spec.summary       = %q{This gem is used to enforce gems and best practices in the project eg. whether cane, rails_best_practices gems are included or not etc.}
-  spec.homepage      = "http://www.kiprosh.com"
+  spec.homepage      = "https://github.com/rohandaxini/kinit"
   spec.license       = "MIT"
 
   spec.files         = Dir['lib/**/*.rb'] + Dir['bin/*'] + Dir['ext/**/*.so'] + Dir['ext/**/*.dll']
