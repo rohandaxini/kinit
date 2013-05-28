@@ -5,5 +5,4 @@ require 'kinit'
 puts "Running Kinit..."
 puts "Performing required checks for your application. Please wait..."
 
-
 puts "Finished running required checks."
