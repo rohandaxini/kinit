@@ -23,9 +23,11 @@ Or install it yourself as:
 
 ## Usage
 
-To use kinit you can
+To use kinit you can run following command on your application root 
+"run_kinit"
 
-require 'kinit'
+
+## More documentation coming soon here....
 
 
 ## Contributing
