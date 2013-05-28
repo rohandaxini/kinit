@@ -50,4 +50,4 @@ Ruby License, see the COPYING file included in the source distribution. The Ruby
 ## Download
 
 The latest version of this library can be downloaded at
-rubyforge.org/
+rubygems.org/gems/kinit
