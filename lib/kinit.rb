@@ -8,7 +8,7 @@ module Kinit
 
   class GemsEnforcer
 
-	  GemError         = Class.new(ArgumentError) 
+	  GemError         = Class.new(ArgumentError)
   	  
     #def initialize end
 
@@ -16,13 +16,11 @@ module Kinit
       errors << message
     end
 
-    def CheckIsGemPresent       
-      gemList = ["cane","rails_best_practices", "reek", "simplecov"]      
+    def CheckIsGemPresent
+      gemList = ["cane","rails_best_practices", "reek", "simplecov"]
 
       gemList.each do |gemname|
-        add_error "Gem '#{gemname}' is not present in your project. Not Good." if !Gem.available?(gemname)                          
-        # puts "Checking if Gem '#{gemname}' present."
-
+        add_error "Gem '#{gemname}' is not present in your project. Not Good." if !Gem.available?(gemname)
         # if Gem::Specification.find_by_name(gem) 
         # raise GemsEnforcer::GemError, "Please include gem 'cane' to the project."        
       end
@@ -41,7 +39,7 @@ module Kinit
       @errors ||= []
     end
     
-    def output_terminal_errors      
+    def output_terminal_errors
       if errors.empty?
         plain_output("\nNo issues or errors found. Cool! Your project passed Kinit checks.", 'green')
       else
@@ -50,7 +48,7 @@ module Kinit
       end
     end
 
-    def plain_output(message, color)        
+    def plain_output(message, color)
       puts result = (color == "red" && red(message) ) || green(message)        
     end
 
