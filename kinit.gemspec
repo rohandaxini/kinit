@@ -8,12 +8,12 @@ Gem::Specification.new do |spec|
   spec.version       = Kinit::VERSION
   spec.authors       = ["Rohan Daxini at Kiprosh.com"]
   spec.email         = ["rohan_daxini@yahoo.com"]
-  spec.description   = %q{This gem is used to enforce gems and best practices in the project eg. whether cane, rails_best_practices gems are included or not etc. and other stuff. You may also configure what all you would like to enforce.}
-  spec.summary       = %q{This gem is used to enforce gems and best practices in the project eg. whether cane, rails_best_practices gems are included or not etc.}
+  spec.description   = %q{A gem enforcer tool to check and enforce important gems and best practices for code quality in ruby and rails code. Its configurable to enable disable what all to enforce.}
+  spec.summary       = %q{A gem enforcer tool to check and enforce important gems and best practices for code quality in ruby and rails code. Its configurable to enable disable what all to enforce.}
   spec.homepage      = "https://github.com/rohandaxini/kinit"
   spec.license       = "MIT"
 
-  spec.files         = Dir['lib/**/*.rb'] + Dir['bin/*'] + Dir['ext/**/*.so'] + Dir['ext/**/*.dll']
+  spec.files         = Dir['lib/**/*.rb'] + Dir['bin/*'] + Dir['ext/**/*.so'] + Dir['ext/**/*.dll'] + Dir['lib/tasks/*.rake']
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.platform      = Gem::Platform::RUBY
   spec.require_paths = ['lib', 'ext']
@@ -23,5 +23,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
   spec.add_development_dependency "rspec"
-
+  spec.add_development_dependency "cane"
+  spec.add_development_dependency "reek"
+  spec.add_development_dependency "rails_best_practices"
+  spec.add_development_dependency "simplecov"
 end
