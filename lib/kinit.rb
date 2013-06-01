@@ -41,7 +41,6 @@ module Kinit
       @errors ||= []
     end
     
-
     def output_terminal_errors      
       if errors.empty?
         plain_output("\nNo issues or errors found. Cool! Your project passed Kinit checks.", 'green')
@@ -58,5 +57,5 @@ module Kinit
     def red(text); colorize(text, 31); end
     def green(text); colorize(text, 32); end
 
-  end # Class ends here
-end #module ends here
+  end 
+end 
