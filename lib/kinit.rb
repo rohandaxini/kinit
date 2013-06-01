@@ -8,11 +8,13 @@ module Kinit
 
   class GemsEnforcer
 
-	  #attr_reader :error, :message
 	  GemError         = Class.new(ArgumentError) 
- 
- 	  #def initialize (app, options={}) end
+  	  
     #def initialize end
+
+    def add_error(message)
+      errors << message
+    end
 
     def CheckIsGemPresent       
       gemList = ["cane","rails_best_practices", "reek", "simplecov"]      
@@ -26,7 +28,7 @@ module Kinit
       end
       
       output_terminal_errors
-      plain_output "Suggestion - You should use tools like 'CodeClimate' for your project. Ignore if already included.", 'green'
+      plain_output "Suggestion - You should use tools like 'CodeClimate' for your project.", 'green'
 
       return true      
     end 
@@ -35,16 +37,10 @@ module Kinit
       "\e[#{color_code}m#{text}\e[0m"
     end
 
-    def red(text); colorize(text, 31); end
-    def green(text); colorize(text, 32); end
-
     def errors
       @errors ||= []
     end
-
-    def add_error(message)
-      errors << message
-    end
+    
 
     def output_terminal_errors      
       if errors.empty?
@@ -58,6 +54,9 @@ module Kinit
     def plain_output(message, color)        
       puts result = (color == "red" && red(message) ) || green(message)        
     end
+
+    def red(text); colorize(text, 31); end
+    def green(text); colorize(text, 32); end
 
   end # Class ends here
 end #module ends here
