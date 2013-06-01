@@ -24,7 +24,8 @@ Or install it yourself as:
 ## Usage
 
 To use kinit you can run following command on your application root 
-"run_kinit"
+
+    run_kinit
 
 
 ## More documentation coming soon here....
