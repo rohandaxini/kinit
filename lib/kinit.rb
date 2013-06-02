@@ -1,7 +1,6 @@
 Dir["tasks/*.rake"].each { |ext| load ext } if defined?(Rake)
-
 require "kinit/version"
-
+require 'yaml'
 
 module Kinit
   require 'kinit/railtie' if defined?(Rails)
@@ -10,25 +9,48 @@ module Kinit
 
 	  GemError         = Class.new(ArgumentError)
   	  
-    #def initialize end
+    def initialize(options={})
+      default_config = File.join(File.dirname(__FILE__), "..", "kinit_config.yml")
+      custom_config = File.join(base_path, 'config/kinit_config.yml')
+      @config = File.exists?(custom_config) ? custom_config : default_config
+    end
 
     def add_error(message)
       errors << message
     end
 
-    def CheckIsGemPresent
-      gemList = ["cane","rails_best_practices", "reek", "simplecov"]
-
-      gemList.each do |gemname|
-        add_error "Gem '#{gemname}' is not present in your project. Not Good." if !Gem.available?(gemname)
-        # if Gem::Specification.find_by_name(gem) 
-        # raise GemsEnforcer::GemError, "Please include gem 'cane' to the project."        
-      end
+    def base_path=(path)
+      @base_path = path
+    end
       
-      output_terminal_errors
-      plain_output "Suggestion - You should use tools like 'CodeClimate' for your project.", 'green'
+    def base_path
+      @base_path || "."
+    end
 
-      return true      
+    def CheckIsGemPresent 
+      gemList = YAML.load_file @config
+      #puts gemList.inspect
+      if !gemList.nil?
+          gemList["bestPracticesGems"].each do |gemname|
+            if Gem.available?(gemname)              
+              plain_output "Gem '#{gemname}' is present in your project. Neat." , 'green'
+            else
+              add_error "Gem '#{gemname}' is not present in your project. Not Good."           
+            end
+            # if Gem::Specification.find_by_name(gem) 
+            # raise GemsEnforcer::GemError, "Please include gem 'cane' to the project."        
+          end
+
+          output_terminal_errors
+
+          gemList["suggestions"].each do |suggestion|
+            plain_output "Suggestion - You should use tools like #{suggestion} for your project.", 'green'
+          end
+
+          return true
+      else
+          return false
+      end      
     end 
 
     def colorize(text, color_code)

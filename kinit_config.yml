@@ -1,0 +1,12 @@
+bestPracticesGems:
+- cane
+- rails_best_practices
+- reek
+- simplecov
+
+testingGems:
+- rspec
+- shoulda
+
+suggestions:
+- CodeClimate

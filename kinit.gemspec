@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
   spec.homepage      = "https://github.com/rohandaxini/kinit"
   spec.license       = "MIT"
 
-  spec.files         = Dir['lib/**/*.rb'] + Dir['bin/*'] + Dir['ext/**/*.so'] + Dir['ext/**/*.dll'] + Dir['lib/tasks/*.rake']
+  spec.files         = Dir['lib/**/*.rb'] + Dir['bin/*'] + Dir['ext/**/*.so'] + Dir['ext/**/*.dll'] + Dir['lib/tasks/*.rake'] + ['kinit_config.yml']
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.platform      = Gem::Platform::RUBY
   spec.require_paths = ['lib', 'ext']
