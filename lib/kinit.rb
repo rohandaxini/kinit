@@ -29,26 +29,32 @@ module Kinit
 
     def CheckIsGemPresent 
       gemList = YAML.load_file @config
+
       #puts gemList.inspect
-      if !gemList.nil?
-          gemList["bestPracticesGems"].each do |gemname|
-            if Gem.available?(gemname)              
-              plain_output "Gem '#{gemname}' is present in your project. Neat." , 'green'
-            else
-              add_error "Gem '#{gemname}' is not present in your project. Not Good."           
+      if gemList
+          if gemList.has_key?("bestPracticesGems")
+            gemList["bestPracticesGems"].each do |gemname|
+              if Gem.available?(gemname)              
+                plain_output "Gem '#{gemname}' is present in your project. Neat." , 'green'
+              else
+                add_error "Gem '#{gemname}' is not present in your project. Not Good."           
+              end
+              # if Gem::Specification.find_by_name(gem) 
+              # raise GemsEnforcer::GemError, "Please include gem 'cane' to the project."        
             end
-            # if Gem::Specification.find_by_name(gem) 
-            # raise GemsEnforcer::GemError, "Please include gem 'cane' to the project."        
           end
 
           output_terminal_errors
 
-          gemList["suggestions"].each do |suggestion|
-            plain_output "Suggestion - You should use tools like #{suggestion} for your project.", 'green'
+          if gemList.has_key?("suggestions") 
+            gemList["suggestions"].each do |suggestion|
+              plain_output "Suggestion - You should use tools like #{suggestion} for your project.", 'green'
+            end
           end
 
           return true
       else
+          #puts gemList.inspect
           return false
       end      
     end 
@@ -75,7 +81,6 @@ module Kinit
     end
 
     def red(text); colorize(text, 31); end
-    def green(text); colorize(text, 32); end
-
+    def green(text); colorize(text, 32); end  
   end 
 end 
