@@ -28,27 +28,30 @@ module Kinit
       @base_path || "."
     end
 
+    def checkGemsForCategory(gemListHash, category_name)
+      if gemListHash.has_key?(category_name)            
+        gemListHash[category_name].each do |gemname|              
+          gem_available?(gemname) ? 
+            (plain_output "\nGem '#{gemname}' is present in your project. Neat." , 'green') 
+            : 
+            (add_error "Gem '#{gemname}' is not present in your project. Not Good.")
+          # if Gem::Specification.find_by_name(gem)
+          # raise GemsEnforcer::GemError, "Please include gem 'cane' to the project."
+        end
+      end      
+    end
+
     def CheckIsGemPresent 
-      gemList = YAML.load_file @config
+      gemListHash = YAML.load_file @config
       #puts gemList.inspect
-      
-      if gemList
-          if gemList.has_key?("bestPracticesGems")
-            gemList["bestPracticesGems"].each do |gemname|
 
-              gem_available?(gemname) ? 
-                (plain_output "Gem '#{gemname}' is present in your project. Neat." , 'green') 
-                : 
-                (add_error "Gem '#{gemname}' is not present in your project. Not Good.")
-              # if Gem::Specification.find_by_name(gem)
-              # raise GemsEnforcer::GemError, "Please include gem 'cane' to the project."
-            end
-          end
-
+      if gemListHash
+          checkGemsForCategory(gemListHash, "bestPracticesGems")
+          checkGemsForCategory(gemListHash, "testingGems")          
           output_terminal_errors
 
-          if gemList.has_key?("suggestions")
-            gemList["suggestions"].each do |suggestion|
+          if gemListHash.has_key?("suggestions")
+            gemListHash["suggestions"].each do |suggestion|
               plain_output "Kinit Suggestions: You may use tools like '#{suggestion}' for your project.", 'green'
             end
           end
@@ -69,7 +72,8 @@ module Kinit
       @errors ||= []
     end
 
-    def gem_available?(name)
+    def gem_available?(name)      
+      show_wait_cursor(0.3)      
       Gem::Specification.find_by_name(name)
       rescue Gem::LoadError
         false
@@ -81,6 +85,7 @@ module Kinit
       if errors.empty?
         plain_output("\nNo issues or errors found. Good! Your project passed Kinit checks.", 'green')
       else
+        puts
         @errors.each { |error| plain_output(error.to_s, 'red') }
         plain_output("\nFound #{errors.size} errors.", 'red')
       end
@@ -92,5 +97,16 @@ module Kinit
 
     def red(text); colorize(text, 31); end
     def green(text); colorize(text, 32); end
+
+    def show_wait_cursor(seconds,fps=10)
+      chars = %w[| / - \\]
+      delay = 1.0/fps
+      (seconds*fps).round.times{ |i|
+        print chars[i % chars.length]
+        sleep delay
+        print "\b"
+      }
+    end
+
   end
 end

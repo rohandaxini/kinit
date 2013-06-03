@@ -5,6 +5,7 @@ bestPracticesGems:
 - simplecov
 
 testingGems:
+- factory_girl_rails
 - rspec
 - shoulda
 
