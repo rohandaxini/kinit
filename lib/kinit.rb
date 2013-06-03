@@ -30,16 +30,16 @@ module Kinit
 
     def CheckIsGemPresent 
       gemList = YAML.load_file @config
-
       #puts gemList.inspect
+      
       if gemList
           if gemList.has_key?("bestPracticesGems")
             gemList["bestPracticesGems"].each do |gemname|
-              if Gem.available?(gemname)
-                plain_output "Gem '#{gemname}' is present in your project. Neat." , 'green'
-              else
-                add_error "Gem '#{gemname}' is not present in your project. Not Good."
-              end
+
+              gem_available?(gemname) ? 
+                (plain_output "Gem '#{gemname}' is present in your project. Neat." , 'green') 
+                : 
+                (add_error "Gem '#{gemname}' is not present in your project. Not Good.")
               # if Gem::Specification.find_by_name(gem)
               # raise GemsEnforcer::GemError, "Please include gem 'cane' to the project."
             end
@@ -68,10 +68,18 @@ module Kinit
     def errors
       @errors ||= []
     end
+
+    def gem_available?(name)
+      Gem::Specification.find_by_name(name)
+      rescue Gem::LoadError
+        false
+      rescue
+        Gem.available?(name)
+    end
     
     def output_terminal_errors
       if errors.empty?
-        plain_output("\nNo issues or errors found. Cool! Your project passed Kinit checks.", 'green')
+        plain_output("\nNo issues or errors found. Good! Your project passed Kinit checks.", 'green')
       else
         @errors.each { |error| plain_output(error.to_s, 'red') }
         plain_output("\nFound #{errors.size} errors.", 'red')
