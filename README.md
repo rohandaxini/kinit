@@ -28,7 +28,26 @@ To use kinit you can run following command on your application root
     run_kinit
 
 
-## More documentation coming soon here....
+## Configure Kinit checks
+To configure Kinit checks for your project, define following file in your app config folder
+
+    config/kninit_config.yml
+
+
+## Sample kinit_config.yml
+
+    bestPracticesGems:
+		- cane
+		- rails_best_practices
+		- reek
+		- simplecov
+
+	testingGems:
+		- rspec
+		- shoulda
+
+	suggestions:
+		- CodeClimate
 
 
 ## Contributing
