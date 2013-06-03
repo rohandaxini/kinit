@@ -17,10 +17,6 @@ And then execute:
 
     $ bundle
 
-Or install it yourself as:
-
-    $ gem install kinit
-
 ## Usage
 
 To use kinit you can run following command on your application root 
