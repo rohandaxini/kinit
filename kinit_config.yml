@@ -1,5 +1,6 @@
 bestPracticesGems:
 - cane
+- rack-mini-profiler
 - rails_best_practices
 - reek
 - simplecov
