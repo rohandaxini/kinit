@@ -31,7 +31,7 @@ To use kinit you can run following command on your application root
 ## Configure Kinit checks
 To configure Kinit checks for your project, define following file in your app config folder
 
-    config/kninit_config.yml
+    config/kinit_config.yml
 
 
 ## Sample kinit_config.yml
