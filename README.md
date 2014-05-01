@@ -1,3 +1,9 @@
+[![Code Climate](https://codeclimate.com/github/rohandaxini/kinit.png)](https://codeclimate.com/github/rohandaxini/kinit)
+
+Master
+![Master](https://circleci.com/gh/rohandaxini/kinit/tree/master.png?circle-token=21c77d04031f06045fd6c6f548229c3609dcd2c3)
+
+
 # Kinit
 
 This is Kiprosh Project Initialization plugin to check various aspects of an application best practices. 
