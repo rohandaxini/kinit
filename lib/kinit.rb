@@ -81,11 +81,11 @@ module Kinit
 
     def output_terminal_errors
       if errors.empty?
-        plain_output("\nNo issues or errors found. Good! Your project passed Kinit checks.", 'green')
+        plain_output("\nNo observations. Your project has all good practices.", 'green')
       else
         puts
         @errors.each { |error| plain_output(error.to_s, 'red') }
-        plain_output("\nFound #{errors.size} errors.", 'red')
+        plain_output("\nFound #{errors.size} observation(s).", 'red')
       end
     end
 
