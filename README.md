@@ -1,12 +1,9 @@
-[![Code Climate](https://codeclimate.com/github/rohandaxini/kinit.png)](https://codeclimate.com/github/rohandaxini/kinit)
-
-Master
-![Master](https://circleci.com/gh/rohandaxini/kinit/tree/master.png?circle-token=21c77d04031f06045fd6c6f548229c3609dcd2c3)
+[![Maintainability](https://codeclimate.com/github/rohandaxini/kinit.png)](https://codeclimate.com/github/rohandaxini/kinit) ![Build Status](https://circleci.com/gh/rohandaxini/kinit/tree/master.png?circle-token=21c77d04031f06045fd6c6f548229c3609dcd2c3)
 
 
 # Kinit
 
-This is Kiprosh Project Initialization plugin to check various aspects of an application best practices. 
+This is Kiprosh Project Initialization plugin to check various aspects of an application best practices.
 
 Kinit gem is used to enforce best practices in a project. Say for example, kinit can be used to check whether your project uses important gems like 'cane', 'rails_best_practices' etc. and strictly follows their guidelines.
 
@@ -25,7 +22,7 @@ And then execute:
 
 ## Usage
 
-To use kinit you can run following command on your application root 
+To use kinit you can run following command on your application root
 
     run_kinit
 
