@@ -4,8 +4,6 @@
 
 # Kinit
 
-This is Kiprosh Project Initialization plugin to check various aspects of an application best practices.
-
 Kinit gem is used to enforce best practices in a project. Say for example, kinit can be used to check whether your project uses important gems like 'cane', 'rails_best_practices' etc. and strictly follows their guidelines.
 
 Kinit gem, once included in the project and run using command "run_kinit" will enforce these practices in the project and will show errors / exceptions accordingly.
