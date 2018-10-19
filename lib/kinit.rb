@@ -9,7 +9,7 @@ module Kinit
 
 	  GemError         = Class.new(ArgumentError)
     CONFIG_FILE      = "kinit_config.yml"
-  	  
+
     def initialize(options={})
       default_config = File.join(File.dirname(__FILE__), "..", CONFIG_FILE)
       custom_config = File.join(base_path, 'config/kinit_config.yml')
@@ -23,31 +23,30 @@ module Kinit
     def base_path=(path)
       @base_path = path
     end
-      
+
     def base_path
       @base_path || "."
     end
 
     def checkGemsForCategory(gemListHash, category_name)
-      if gemListHash.has_key?(category_name)            
-        gemListHash[category_name].each do |gemname|              
-          gem_available?(gemname) ? 
-            (plain_output "\nGem '#{gemname}' is present in your project. Neat." , 'green') 
-            : 
+      if gemListHash.has_key?(category_name)
+        gemListHash[category_name].each do |gemname|
+          gem_available?(gemname) ?
+            (plain_output "\nGem '#{gemname}' is present in your project. Neat." , 'green')
+            :
             (add_error "Gem '#{gemname}' is not present in your project. Not Good.")
           # if Gem::Specification.find_by_name(gem)
           # raise GemsEnforcer::GemError, "Please include gem 'cane' to the project."
         end
-      end      
+      end
     end
 
-    def CheckIsGemPresent 
+    def CheckIsGemPresent
       gemListHash = YAML.load_file @config
-      #puts gemList.inspect
 
       if gemListHash
           checkGemsForCategory(gemListHash, "bestPracticesGems")
-          checkGemsForCategory(gemListHash, "testingGems")          
+          checkGemsForCategory(gemListHash, "testingGems")
           output_terminal_errors
 
           if gemListHash.has_key?("suggestions")
@@ -58,7 +57,6 @@ module Kinit
 
           return true
       else
-          #puts gemList.inspect
           plain_output "Please define checks in your config/kinit_config.yml to enforce best practices.", 'red'
           return false
       end
@@ -72,15 +70,15 @@ module Kinit
       @errors ||= []
     end
 
-    def gem_available?(name)      
-      show_wait_cursor(0.3)      
+    def gem_available?(name)
+      show_wait_cursor(0.3)
       Gem::Specification.find_by_name(name)
       rescue Gem::LoadError
         false
       rescue
         Gem.available?(name)
     end
-    
+
     def output_terminal_errors
       if errors.empty?
         plain_output("\nNo issues or errors found. Good! Your project passed Kinit checks.", 'green')

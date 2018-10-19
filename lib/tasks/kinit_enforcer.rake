@@ -1,6 +1,6 @@
 desc 'my plugins rake task'
 task :do_kinit_enforce do
-  puts "Enforcing best practices."
+  puts "Scanning..."
   gen = Kinit::GemsEnforcer.new
-  gen.CheckIsGemPresent 
+  gen.CheckIsGemPresent
 end

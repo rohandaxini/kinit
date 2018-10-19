@@ -1,5 +1,6 @@
-[![Maintainability](https://codeclimate.com/github/rohandaxini/kinit.png)](https://codeclimate.com/github/rohandaxini/kinit) ![Build Status](https://circleci.com/gh/rohandaxini/kinit/tree/master.png?circle-token=21c77d04031f06045fd6c6f548229c3609dcd2c3)
+[![Maintainability](https://codeclimate.com/github/rohandaxini/kinit.png)](https://codeclimate.com/github/rohandaxini/kinit) ![](http://ruby-gem-downloads-badge.herokuapp.com/kinit?color=brightgreen&type=total)
 
+Build Status: ![Build Status](https://circleci.com/gh/rohandaxini/kinit/tree/master.png?circle-token=21c77d04031f06045fd6c6f548229c3609dcd2c3)
 
 # Kinit
 
@@ -40,6 +41,8 @@ To configure Kinit checks for your project, define following file in your app co
 		- rails_best_practices
 		- reek
 		- simplecov
+		- rubocop
+		- bullet
 
 	testingGems:
 		- rspec
