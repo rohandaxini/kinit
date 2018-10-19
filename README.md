@@ -44,7 +44,6 @@ To configure Kinit checks for your project, define following file in your app co
 
 	testingGems:
 		- rspec
-		- shoulda_not
 
 	suggestions:
 		- CodeClimate
