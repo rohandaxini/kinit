@@ -1,14 +1,14 @@
 bestPracticesGems:
+- bullet
 - cane
-- rack-mini-profiler
 - rails_best_practices
 - reek
+- rubocop
 - simplecov
 
 testingGems:
 - factory_girl_rails
 - rspec
-- shoulda
 
 suggestions:
 - CodeClimate
