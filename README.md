@@ -36,7 +36,6 @@ To configure Kinit checks for your project, define following file in your app co
 
     bestPracticesGems:
 		- bullet
-		- cane
 		- rails_best_practices
 		- reek
 		- rubocop
