@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    kinit (0.1.5)
+    kinit (0.1.6)
 
 GEM
   remote: https://rubygems.org/
