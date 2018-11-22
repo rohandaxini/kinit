@@ -4,9 +4,9 @@
 
 # Kinit
 
-Kinit gem is used to enforce best practices in a project. Say for example, kinit can be used to check whether your project uses important gems like 'cane', 'rails_best_practices' etc. and strictly follows their guidelines.
+Kinit gem is used to enforce best practices in a project. Say for example, kinit can be used to check whether your project uses important gems like 'rubocop', 'rails_best_practices' etc. and strictly follows their guidelines.
 
-Kinit gem, once included in the project and run using command "run_kinit" will enforce these practices in the project and will show errors / exceptions accordingly.
+Kinit gem, once included in the project and run using command "run_kinit" will enforce these practices in the project and will show a report along with suggestions.
 
 
 ## Installation
@@ -36,7 +36,6 @@ To configure Kinit checks for your project, define following file in your app co
 
     bestPracticesGems:
 		- bullet
-		- cane
 		- rails_best_practices
 		- reek
 		- rubocop

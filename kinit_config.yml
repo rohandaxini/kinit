@@ -1,13 +1,12 @@
 bestPracticesGems:
 - bullet
-- cane
 - rails_best_practices
 - reek
 - rubocop
 - simplecov
 
 testingGems:
-- factory_girl_rails
+- factory_bot_rails
 - rspec
 
 suggestions:
