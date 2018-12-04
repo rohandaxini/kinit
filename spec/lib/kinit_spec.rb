@@ -4,7 +4,7 @@ module Kinit
 	describe Kinit do
 	  it "should return true if a gem is present" do
 	    @gen = GemsEnforcer.new
-	    element_data = @gen.CheckIsGemPresent
+	    element_data = @gen.scan_gems
 	    expect(element_data).not_to be_nil
 	    expect(element_data).to be true
 	  end

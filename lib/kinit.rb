@@ -5,9 +5,9 @@ require 'yaml'
 module Kinit
   require 'kinit/railtie' if defined?(Rails)
 
+  # GemsEnforcer
   class GemsEnforcer
-
-	  GemError         = Class.new(ArgumentError)
+    GemError         = Class.new(ArgumentError)
     CONFIG_FILE      = "kinit_config.yml"
 
     def initialize(options={})
@@ -41,7 +41,7 @@ module Kinit
       end
     end
 
-    def CheckIsGemPresent
+    def scan_gems
       gemListHash = YAML.load_file @config
 
       if gemListHash
